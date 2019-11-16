@@ -47,7 +47,8 @@ func (o *arg) check(argument string) bool {
 	if argument == "-h" || argument == "--help" {
 		helpText := o.parent.Help(nil)
 		fmt.Print(helpText)
-		os.Exit(0)
+		//os.Exit(0)
+		return false
 	}
 
 	// Check for long name only if not empty
@@ -137,7 +138,8 @@ func (o *arg) parse(args []string) error {
 	case *help:
 		helpText := o.parent.Help(nil)
 		fmt.Print(helpText)
-		os.Exit(0)
+		//os.Exit(0)
+		return fmt.Errorf("")
 	case *bool:
 		*o.result.(*bool) = true
 		o.parsed = true
